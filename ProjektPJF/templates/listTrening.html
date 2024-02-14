@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +7,28 @@
     <title>Lista Treningów</title>
 </head>
 <body>
-    <h1>Lista Treningów</h1>
-    <ul>
-        {% for trening in trenings %}
-            <li>
-                <strong>Nazwa Treningu:</strong> {{ trening.Nazwa_Treningu }}<br>
-                <strong>Data Treningu:</strong> {{ trening.Data_Treningu }}<br>
-                <strong>Opis:</strong> {{ trening.Opis|default:"Brak opisu" }}<br>
-                <strong>Czas Treningu:</strong> {{ trening.CzasTreningu }} minut<br>
-                <strong>Użytkownik:</strong> {{ trening.User.username|default:"Brak" }}<br>
-            </li>
-        {% endfor %}
-    </ul>
+    <div style="width: 100%; margin: 0 ; display: flex; justify-content: center;background-color: #1E90FF; color: #fff; font-family: 'Verdana', Verdana;">
+        <h1>Lista treningów</h1>
+    </div>
+    <div style="width: 100%; margin: 0 ; display: flex; justify-content: center;">
+        <table style="border-collapse: collapse; width: 100%;">
+            <tr>
+                <th style="font-size: large ;background-color: #1E90FF ;border: 1px solid #ccc; padding: 5px;text-align: center;">Nazwa Treningu</th>
+                <th style="font-size: large ;background-color: #1E90FF ;border: 1px solid #ccc; padding: 5px;text-align: center;">Data Treningu</th>
+                <th style="font-size: large ;background-color: #1E90FF ;border: 1px solid #ccc; padding: 5px;text-align: center;">Opis</th>
+                <th style="font-size: large ;background-color: #1E90FF ;border: 1px solid #ccc; padding: 5px;text-align: center;">Czas Treningu (min)</th>
+                <th style="font-size: large ;background-color: #1E90FF ;border: 1px solid #ccc; padding: 5px;text-align: center;">Użytkownik</th>
+            </tr>
+            {% for trening in trenings %}
+                <tr>
+                    <td style="font-size: large ;border: 1px solid #ccc; padding: 5px;text-align: center;">{{ trening.Nazwa_Treningu }}</td>
+                    <td style="font-size: large ;border: 1px solid #ccc; padding: 5px;text-align: center;">{{ trening.Data_Treningu }}</td>
+                    <td style="font-size: large ;border: 1px solid #ccc; padding: 5px;text-align: center;">{{ trening.Opis|default:"Brak opisu" }}</td>
+                    <td style="font-size: large ;border: 1px solid #ccc; padding: 5px;text-align: center;">{{ trening.CzasTreningu }}</td>
+                    <td style="font-size: large ;border: 1px solid #ccc; padding: 5px;text-align: center;">{{ trening.User.username|default:"Brak" }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>

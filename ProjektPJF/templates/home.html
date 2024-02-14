@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trening App - Home</title>
+    <title>Zaplanuj trening</title>
 </head>
 <body>
-    <h1>Zaplanuj swoj trening</h1>
-    <p>Wybierz opcje:</p>
-    <a href="{% url 'addtrening' %}">Dodaj nowy trening</a>
-    <br>
-    <a href="{% url 'listoftrening' %}">Wyświetl liste treningów</a>
-    <br>
-    </body>
+    <div style="background-color: #1E90FF; color: #fff; font-family: 'Verdana', Verdana;">
+        <div style="background-color: #1E90FF; padding: 10px; text-align: center;">
+            <h1>Zaplanuj trening</h1>
+            <br>
+
+        </div>
+        <div style="background-color: white ;display: flex; justify-content: center;text-align: center;">
+            <a href="{% url 'addtrening' %}" style="font-size: large ; color: #1E90FF ; text-decoration: none; margin: 10px; padding: 10px 20px; border: 1px solid #ccc; border-radius: 5px;">Dodaj nowy trening</a>
+            <a href="{% url 'listoftrening' %}" style="font-size: large ; color: #1E90FF; text-decoration: none ;margin: 10px; padding: 10px 20px; border: 1px solid #ccc; border-radius: 5px;">Wyświetl listę treningów</a>
+        </div>
+    </div>
+</body>
 </html>
