@@ -17,7 +17,7 @@ Including another URLconf
 from turtle import home
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 
 from treningapp.views import ListOfTerenning, add_trening, home
@@ -26,5 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('listTrening/', ListOfTerenning, name='listoftrening'),
     path('AddTrening/', add_trening, name='addtrening'),
-    path('', home, name='home')
+    path('', home, name='home'),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
