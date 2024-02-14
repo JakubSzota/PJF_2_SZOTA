@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Treningów</title>
+</head>
+<body>
+    <h1>Lista Treningów</h1>
+    <ul>
+        {% for trening in trenings %}
+            <li>
+                <strong>Nazwa Treningu:</strong> {{ trening.Nazwa_Treningu }}<br>
+                <strong>Data Treningu:</strong> {{ trening.Data_Treningu }}<br>
+                <strong>Opis:</strong> {{ trening.Opis|default:"Brak opisu" }}<br>
+                <strong>Czas Treningu:</strong> {{ trening.CzasTreningu }} minut<br>
+                <strong>Użytkownik:</strong> {{ trening.User.username|default:"Brak" }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

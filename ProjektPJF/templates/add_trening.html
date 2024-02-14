@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodawanie Treningu</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1>Dodaj nowy trening</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="Nazwa_Treningu">Nazwa Treningu:</label>
+        <input type="text" id="Nazwa_Treningu" name="Nazwa_Treningu" required>
+        <br>
+        <label for="Data_Treningu">Data Treningu:</label>
+        <input type="date" id="Data_Treningu" name="Data_Treningu" required>
+        <br>
+        <label for="Opis">Opis:</label>
+        <br>
+        <textarea id="Opis" name="Opis" rows="4" cols="50"></textarea>
+        <br>
+        <label for="CzasTreningu">Czas Treningu (minuty):</label>
+        <input type="number" id="CzasTreningu" name="CzasTreningu" required>
+        <br>
+        <label for="User">Użytkownik:</label>
+        <select id="User" name="User">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <button type="submit">Dodaj</button>
+    </form>
+</body>
+</html>
