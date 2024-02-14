@@ -10,7 +10,8 @@ def ListOfTerenning(request):
 
     return render(request, "listTrening.html", {'trenings': trenings})
 
-@login_required
+def home(request):
+    return render(request, 'home.html')
 def add_trening(request):
     if request.method == 'POST':
         form = AddTrening(request.POST)
@@ -24,3 +25,4 @@ def add_trening(request):
         'form': form,
     }
     return render(request, 'add_trening.html', context)
+
