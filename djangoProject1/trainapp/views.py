@@ -1,16 +1,20 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-
+from .forms import TrainingForm, TrainingExerciseForm, ExerciseForm
+from django.contrib.auth.decorators import login_required
 from .models import Training, TrainingExercise, Exercise
+from django.db.models import F
 
-
-def list_of_training(request):
+def list_of_training_for_all(request):
     trainings = Training.objects.all()
     return render(request, '../templates/list_of_training.html', {'trainings': trainings})
+@login_required
+def list_of_training(request):
+    current_user = request.user
+    trainings = Training.objects.filter(user=current_user)
+    return render(request, 'list_of_training.html', {'trainings': trainings})
 
-from django.shortcuts import render, redirect
-from .forms import TrainingForm, TrainingExerciseForm, ExerciseForm
-from .models import Training
+
 
 def add_training(request):
     if request.method == 'POST':
@@ -32,22 +36,35 @@ def add_training(request):
         training_form = TrainingForm()
     return render(request, 'add_training.html', {'training_form': training_form})
 
+
 def add_exercises(request, training_id):
     training = Training.objects.get(pk=training_id)
+    all_calories = training.all_calories if training.all_calories else 0  # Sprawdzanie czy all_calories nie jest None
+
     if request.method == 'POST':
         exercise_form = TrainingExerciseForm(request.POST)
         if exercise_form.is_valid():
             exercise = exercise_form.save(commit=False)
             exercise.training = training
             exercise.save()
+
+            # Pobieranie obiektu ćwiczenia powiązanego z TrainingExercise
+            exercise_info = Exercise.objects.get(pk=exercise.exercise_id)
+
+            # Obliczanie kalorii dla aktualnego ćwiczenia na podstawie wzoru calories * series * repetitions
+            calories_for_exercise = exercise_info.calories_per_one * exercise.series * exercise.repetitions
+            all_calories += calories_for_exercise
+            training.all_calories = all_calories
+            training.save()
+
             if 'add_next' in request.POST:
                 return redirect('add_exercises', training_id=training_id)
             elif 'finish' in request.POST:
                 return redirect('list_of_training')
     else:
         exercise_form = TrainingExerciseForm()
-    return render(request, 'add_exercises.html', {'exercise_form': exercise_form, 'training': training})
 
+    return render(request, 'add_exercises.html', {'exercise_form': exercise_form, 'training': training})
 def training_exercises(request, training_id):
     training_exercises = TrainingExercise.objects.filter(training_id=training_id)
     training_name = training_exercises.first().training.name  # Pobieramy nazwę treningu

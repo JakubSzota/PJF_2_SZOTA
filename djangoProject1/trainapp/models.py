@@ -19,6 +19,7 @@ class Training(models.Model):
     name = models.CharField(max_length=100,null=True)
     datetime = models.DateTimeField()
     executed = models.BooleanField(default=False)
+    all_calories = models.FloatField(null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField(blank=True)
     duration = models.FloatField(null=True)
