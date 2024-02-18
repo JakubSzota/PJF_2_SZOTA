@@ -7,7 +7,7 @@ class BodyPart(models.Model):
         return self.name
 class Exercise(models.Model):
     name = models.CharField(max_length=100)
-    difficulty = models.CharField(max_length=50)
+    difficulty = models.CharField(max_length=50, choices=[('easy', 'Easy'), ('medium', 'Medium'), ('hard', 'Hard')])
     calories_per_one = models.FloatField()
     body_part = models.ForeignKey(BodyPart, on_delete=models.SET_NULL, null=True)
     description = models.TextField(blank=True)

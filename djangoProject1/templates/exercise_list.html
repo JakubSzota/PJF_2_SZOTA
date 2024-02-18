@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Difficulty</th>
+            <th>Calories</th>
+            <th>Body Part</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for exercise in exercises %}
+        <tr>
+            <td>{{ exercise.name }}</td>
+            <td>{{ exercise.difficulty }}</td>
+            <td>{{ exercise.calories_per_one }}</td>
+            <td>{% if exercise.body_part %}{{ exercise.body_part.name }}{% endif %}</td>
+            <td>{{ exercise.description }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -116,3 +116,5 @@ LOGIN_REDIRECT_URL = "home"  # new
 LOGOUT_REDIRECT_URL = "home"  # new
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+#

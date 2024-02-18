@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
-from .models import Training, TrainingExercise
+from django.urls import reverse_lazy
+
+from .models import Training, TrainingExercise, Exercise
+
 
 def list_of_training(request):
     trainings = Training.objects.all()
     return render(request, '../templates/list_of_training.html', {'trainings': trainings})
 
 from django.shortcuts import render, redirect
-from .forms import TrainingForm, TrainingExerciseForm
+from .forms import TrainingForm, TrainingExerciseForm, ExerciseForm
 from .models import Training
 
 def add_training(request):
@@ -49,3 +52,18 @@ def training_exercises(request, training_id):
     training_exercises = TrainingExercise.objects.filter(training_id=training_id)
     training_name = training_exercises.first().training.name  # Pobieramy nazwę treningu
     return render(request, 'training_exercises.html', {'training_exercises': training_exercises, 'training_name': training_name})
+
+def exercise_list(request):
+    exercises = Exercise.objects.all()
+    return render(request, 'exercise_list.html', {'exercises': exercises})
+
+def exercise_create(request):
+    if request.method == 'POST':
+        form = ExerciseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy('exercise_list'))
+    else:
+        form = ExerciseForm()
+    return render(request, 'exercise_create.html', {'form': form})
+
