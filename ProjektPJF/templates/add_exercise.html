@@ -7,19 +7,19 @@
 </head>
 <body>
         <div style="width: 100%; margin: 0 ; display: flex; justify-content: center;background-color: #1E90FF; color: #fff; font-family: 'Verdana', Verdana;">
-        <h1>Dodaj nowy trening</h1>
+        <h1>Dodaj nowe ćwiczenie.</h1>
         </div>
         <br/>
         <br/>
     <div style="width: 100%; margin: 0; background-color: white ;display: flex; justify-content: center;text-align: center;">
     <form method="post">
         {% csrf_token %}
-        <label for="Nazwa_Treningu">Nazwa Treningu:</label>
-        <input type="text" id="Nazwa_Treningu" name="Nazwa_Treningu" required>
+        <label for="Nazwa_cwiczenia">Nazwa ćwiczenia:</label>
+        <input type="text" id="Nazwa_cwiczenia" name="Nazwa_cwiczenia" required>
         <br/>
         <br/>
-        <label for="Data_Treningu">Data Treningu:</label>
-        <input type="date" id="Data_Treningu" name="Data_Treningu" required>
+        <label for="Liczba_Serii">Liczba serii:</label>
+        <input type="number" id="Liczba_Serii" name="Liczba_Serii">
         <br/>
         <br/>
         <label for="Opis">Opis:</label>
@@ -27,15 +27,10 @@
         <textarea id="Opis" name="Opis" rows="4" cols="50"></textarea>
         <br/>
         <br/>
-        <label for="CzasTreningu">Czas Treningu: </label>
-        <input type="number" id="CzasTreningu" name="CzasTreningu" required>
-            <label for="CzasTreningu">(MIN)</label>
-        <br/>
-        <br/>
-        <label for="Member">Member:</label>
-        <select id="Member" name="Member">
-            {% for Member in Member %}
-                <option value="{{ Member.id }}">{{ Member.Imie }}</option>
+        <label for="User">Użytkownik:</label>
+        <select id="User" name="User">
+            {% for User in User %}
+                <option value="{{ User.id }}">{{ User.username }}</option>
             {% endfor %}
         </select>
         <br>
