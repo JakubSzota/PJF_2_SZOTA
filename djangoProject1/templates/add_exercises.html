@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Exercises</title>
+</head>
+<body>
+    <h1>Add Exercises to Training "{{ training.name }}"</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ exercise_form.as_p }}
+        <input type="hidden" name="training_id" value="{{ training.id }}">
+        <button type="submit" name="add_next">Add Next Exercise</button>
+        <button type="submit" name="finish">Finish</button>
+    </form>
+</body>
+</html>
+
