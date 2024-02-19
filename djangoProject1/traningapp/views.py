@@ -39,7 +39,7 @@ def add_training(request):
 
 def add_exercises(request, training_id):
     training = Training.objects.get(pk=training_id)
-    all_calories = training.all_calories if training.all_calories else 0  # Sprawdzanie czy all_calories nie jest None
+    all_calories = training.all_calories if training.all_calories else 0
 
     if request.method == 'POST':
         exercise_form = TrainingExerciseForm(request.POST)
@@ -63,7 +63,7 @@ def add_exercises(request, training_id):
     return render(request, 'add_exercises.html', {'exercise_form': exercise_form, 'training': training})
 def training_exercises(request, training_id):
     training_exercises = TrainingExercise.objects.filter(training_id=training_id)
-    training_name = training_exercises.first().training.name  # Pobieramy nazwę treningu
+    training_name = training_exercises.first().training.name
     return render(request, 'training_exercises.html', {'training_exercises': training_exercises, 'training_name': training_name})
 
 def exercise_list(request):

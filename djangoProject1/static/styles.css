@@ -20,14 +20,14 @@ body {
     width: 20px; /* or desired width */
     height: 20px; /* or desired height */
 }
-.calendar {
+.formularz {
     width: 400px;
     justify-content: Left;
     align-items: flex-start;
     margin-left: 75px;
     margin-right: 75px;
 }
-input[type="date"] {
+input[type="submit"] {
     box-sizing: border-box;
     width: 50%;
     height: 50px;
@@ -40,7 +40,7 @@ input[type="date"] {
     margin-top: 10px;
     margin-bottom: 1em; /*ladne ustawienie napisu */
 }
-input[type="date"][required]:focus {
+input[type="submit"][required]:focus {
     border-color: #c0c0c0;
 }
 

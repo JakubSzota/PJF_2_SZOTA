@@ -7,7 +7,10 @@
     {% if user.is_authenticated %}
         <div style="justify-content: center; text-align: center ">
         <p>Cześć {{ user.username }}! Witamy w aplikacji treningowej :)</p>
-        <a class="custom-btn" href="trainapp">Zaplanuj swój trening</a>
+        <a class="custom-btn" href="traningapp/add_training/">Dodaj trening!</a>
+        <a class="custom-btn" href="traningapp/exercise_create/">Dodaj ćwiczenie!</a>
+        <a class="custom-btn" href="traningapp/list_of_training/">Lista treningów!</a>
+        <a class="custom-btn" href="traningapp/exercise_list/">Lista ćwiczeń!</a>
         <a class="custom-btn" href="{% url 'password_change' %}">Zmień hasło</a>
         <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}

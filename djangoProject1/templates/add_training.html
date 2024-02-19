@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Training</title>
+    <title>Dodaj trening</title>
 </head>
-<body>
-    <h1>Add Training</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ training_form.as_p }}
-        <button type="submit" name="add_training">Add Training</button>
-    </form>
-</body>
+    {% block content %}
+        <body>
+        <div style="justify-content: center; text-align: center ">
+            <h1>Add Training</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ training_form.as_p }}
+                <button class="custom-btn" type="submit" name="add_training">Dodaj trening</button>
+            </form>
+            </div>
+        </body>
+    {% endblock %}
 </html>
 
 

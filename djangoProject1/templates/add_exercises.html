@@ -11,7 +11,7 @@
         {% csrf_token %}
         {{ exercise_form.as_p }}
         <input type="hidden" name="training_id" value="{{ training.id }}">
-        <button type="submit" name="add_next">Add Next Exercise</button>
+        <button clas="custom-bnt"type="submit" name="add_next">Add Next Exercise</button>
         <button type="submit" name="finish">Finish</button>
     </form>
 </body>
