@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Exercises</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
 <body>
-    <h1>Add Exercises to Training "{{ training.name }}"</h1>
+    <div style="justify-content: center; text-align: center ">
+    <h1>Dodaj ćwiczenie "{{ training.name }}"</h1>
     <form method="post">
         {% csrf_token %}
         {{ exercise_form.as_p }}
         <input type="hidden" name="training_id" value="{{ training.id }}">
-        <button clas="custom-bnt"type="submit" name="add_next">Add Next Exercise</button>
-        <button type="submit" name="finish">Finish</button>
+        <button class="custom-btn" type="submit" name="add_next">Dodaj ćwiczenie</button>
+        <button class="custom-btn" type="submit" name="finish">Zakończ</button>
     </form>
+    </div>
 </body>
-</html>
+{%  endblock %}
 

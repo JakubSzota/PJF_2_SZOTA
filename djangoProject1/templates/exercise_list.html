@@ -1,28 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Difficulty</th>
-            <th>Calories</th>
-            <th>Body Part</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for exercise in exercises %}
-        <tr>
-            <td>{{ exercise.name }}</td>
-            <td>{{ exercise.difficulty }}</td>
-            <td>{{ exercise.calories_per_one }}</td>
-            <td>{% if exercise.body_part %}{{ exercise.body_part.name }}{% endif %}</td>
-            <td>{{ exercise.description }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+<div style="justify-content: center; text-align: center ">
+    <h1>Lista ćwiczeń</h1>
+    <table>
+        <thead>
+            <tr>
+                <th class="tab1">Nazwa</th>
+                <th class="tab1">Trudność</th>
+                <th class="tab1">Kalorie</th>
+                <th class="tab1">Grupa mięśni</th>
+                <th class="tab1">Opis</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exercise in exercises %}
+            <tr>
+                <td class="tab1">{{ exercise.name }}</td>
+                <td class="tab1">{{ exercise.difficulty }}</td>
+                <td class="tab1">{{ exercise.calories_per_one }}</td>
+                <td class="tab1">{% if exercise.body_part %}{{ exercise.body_part.name }}{% endif %}</td>
+                <td class="tab1">{{ exercise.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

@@ -8,13 +8,11 @@ from django.db.models import F
 def list_of_training_for_all(request):
     trainings = Training.objects.all()
     return render(request, '../templates/list_of_training.html', {'trainings': trainings})
-@login_required
+
 def list_of_training(request):
     current_user = request.user
     trainings = Training.objects.filter(user=current_user)
     return render(request, 'list_of_training.html', {'trainings': trainings})
-
-
 
 def add_training(request):
     if request.method == 'POST':
@@ -40,7 +38,6 @@ def add_training(request):
 def add_exercises(request, training_id):
     training = Training.objects.get(pk=training_id)
     all_calories = training.all_calories if training.all_calories else 0
-
     if request.method == 'POST':
         exercise_form = TrainingExerciseForm(request.POST)
         if exercise_form.is_valid():

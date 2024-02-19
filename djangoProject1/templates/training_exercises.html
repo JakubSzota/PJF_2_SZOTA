@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ training_name }} Exercises</title>
-</head>
+ extends 'base.html' %}
+
+{% block content %}
 <body>
-    <h1>{{ training_name }} Exercises</h1>
+    <h1>{{ training_name }} ćwiczenia treningu</h1>
     <table>
         <thead>
             <tr>
-                <th>Exercise</th>
-                <th>Repetitions</th>
-                <th>Series</th>
+                <th class="tab1">Ćwiczenie</th>
+                <th class="tab1">Powtórzenia</th>
+                <th class="tab1">Ilość serii</th>
             </tr>
         </thead>
         <tbody>
             {% for exercise in training_exercises %}
             <tr>
-                <td>{{ exercise.exercise }}</td>
-                <td>{{ exercise.repetitions }}</td>
-                <td>{{ exercise.series }}</td>
+                <td class="tab1">{{ exercise.exercise }}</td>
+                <td class="tab1">{{ exercise.repetitions }}</td>
+                <td class="tab1">{{ exercise.series }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </body>
-</html>
+{% endblock %}
