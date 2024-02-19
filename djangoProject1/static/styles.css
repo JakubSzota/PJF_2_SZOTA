@@ -45,7 +45,7 @@ input[type="submit"][required]:focus {
 }
 .tab1{
     font-size: large;
-    background:  linear-gradient(#3f87a6, #ebf8e1);
+    background-color: #ddd;
     padding: 4px;
     text-align: center;
 }

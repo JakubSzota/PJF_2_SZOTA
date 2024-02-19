@@ -11,10 +11,11 @@
 </head>
 
 <body>
+    <div style="background:  linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);">
     {% block header %}
     <header>
         <div class="change-header">
-            <h1> Traning app</h1>
+            <h1 style="color: #ddd"> Traning app</h1>
             <div>
             <a class="custom-btn" href="{% url 'home' %}">Strona główna</a>
             <a class="custom-btn" href="{% url 'password_reset' %}">Zmień hasło</a>
@@ -25,6 +26,7 @@
     {% endblock %}
     {% block content %}
     {% endblock %}
+    </div>
 </body>
 
 </html>
