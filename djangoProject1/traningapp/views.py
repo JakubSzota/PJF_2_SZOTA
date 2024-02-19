@@ -9,17 +9,20 @@ def list_of_training_for_all(request):
     trainings = Training.objects.all()
     return render(request, '../templates/list_of_training.html', {'trainings': trainings})
 
+@login_required
 def list_of_training(request):
     current_user = request.user
     trainings = Training.objects.filter(user=current_user)
     return render(request, 'list_of_training.html', {'trainings': trainings})
 
+@login_required
 def add_training(request):
     if request.method == 'POST':
         if 'add_training' in request.POST:
             training_form = TrainingForm(request.POST)
             if training_form.is_valid():
                 training = training_form.save()
+                training.User = request.user
                 return redirect('add_exercises', training_id=training.id)
         elif 'add_exercises' in request.POST:
             training_id = request.POST.get('training_id')
@@ -33,7 +36,6 @@ def add_training(request):
     else:
         training_form = TrainingForm()
     return render(request, 'add_training.html', {'training_form': training_form})
-
 
 def add_exercises(request, training_id):
     training = Training.objects.get(pk=training_id)

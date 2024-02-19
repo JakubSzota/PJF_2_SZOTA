@@ -20,7 +20,7 @@ class Training(models.Model):
     datetime = models.DateTimeField()
     executed = models.BooleanField(default=False)
     all_calories = models.FloatField(null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     description = models.TextField(blank=True)
     duration = models.FloatField(null=True)
     exercises = models.ManyToManyField('Exercise', through='TrainingExercise')
