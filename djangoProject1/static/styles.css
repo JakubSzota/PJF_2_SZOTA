@@ -17,8 +17,8 @@ body {
     justify-content: space-between;
 }
 .resized-svg {
-    width: 20px; /* or desired width */
-    height: 20px; /* or desired height */
+    width: 20px;
+    height: 20px;
 }
 .formularz {
     width: 400px;
@@ -38,7 +38,7 @@ input[type="submit"] {
     resize: none;
     outline: none;
     margin-top: 10px;
-    margin-bottom: 1em; /*ladne ustawienie napisu */
+    margin-bottom: 1em;
 }
 input[type="submit"][required]:focus {
     border-color: #c0c0c0;
