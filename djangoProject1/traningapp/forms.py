@@ -7,7 +7,7 @@ from .models import Training, TrainingExercise, Exercise
 class TrainingForm(forms.ModelForm):
     class Meta:
         model = Training
-        fields = ['name', 'datetime', 'executed', 'description']
+        fields = ['name', 'datetime', 'executed', 'description', 'duration']
         widgets = {
             'datetime': forms.DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
         }

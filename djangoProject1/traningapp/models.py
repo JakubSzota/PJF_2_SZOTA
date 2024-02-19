@@ -24,7 +24,6 @@ class Training(models.Model):
     description = models.TextField(blank=True)
     duration = models.FloatField(null=True)
     exercises = models.ManyToManyField('Exercise', through='TrainingExercise')
-
     def __str__(self):
         return f"Training at {self.datetime}"
 

@@ -22,7 +22,8 @@ def add_training(request):
             training_form = TrainingForm(request.POST)
             if training_form.is_valid():
                 training = training_form.save()
-                training.User = request.user
+                training.user = request.user
+                training.save()
                 return redirect('add_exercises', training_id=training.id)
         elif 'add_exercises' in request.POST:
             training_id = request.POST.get('training_id')
